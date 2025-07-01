@@ -5,7 +5,7 @@ if (session_status() == PHP_SESSION_NONE) {
 }
 
 if (isset($_SESSION['user_id'])) {
-    header('Location: ../dashboard.php'); 
+    header('Location: ../public/dashboard.php'); 
     exit();
 }
 
@@ -38,8 +38,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 if ($user && password_verify($password, $user['password_hash'])) {
                     $_SESSION['user_id'] = $user['id'];
                     $_SESSION['full_name'] = $user['full_name'];
-                    $_SESSION['user_role'] = $user['role']; 
-                    header('Location: ../dashboard.php'); 
+                    $_SESSION['user_role'] = $user['role'];
+
+                    if ($user['role'] === 'admin') {
+                        header('Location: ../public/admin/admin_dashboard.php'); // arahkan ke admin
+                    } else {
+                        header('Location: ../public/dashboard.php'); // arahkan ke user biasa
+                    }
                     exit();
                 } else {
                     $errors[] = 'Invalid email or password.';

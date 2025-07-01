@@ -70,11 +70,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 $subscriptions = [];
 try {
     $stmt = $pdo->prepare("
-        SELECT s.id, mp.name AS plan_name, s.meal_types, s.delivery_days, s.total_price, s.status, s.start_date, s.end_date, s.pause_start_date, s.pause_end_date
-        FROM subscriptions s
-        JOIN meal_plans mp ON s.meal_plan_id = mp.id
-        WHERE s.user_id = ? ORDER BY s.created_at DESC
-    ");
+    SELECT s.id, mp.plan_name AS plan_name, s.meal_types, s.delivery_days, s.total_price, s.status, s.start_date, s.end_date, s.pause_start_date, s.pause_end_date
+    FROM subscriptions s
+    JOIN meal_plans mp ON s.plan_id = mp.id
+    WHERE s.user_id = ? ORDER BY s.subscription_date DESC
+");
+
+
     $stmt->execute([$user_id]);
     $subscriptions = $stmt->fetchAll(PDO::FETCH_ASSOC);
 } catch (PDOException $e) {

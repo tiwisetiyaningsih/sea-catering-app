@@ -19,18 +19,23 @@ try {
         <?php if (!empty($meal_plans)): ?>
             <?php foreach ($meal_plans as $plan): ?>
                 <div class="col">
-                    <div class="card h-100 shadow-sm">
-                        <img src="https://i0.wp.com/ciputrahospital.com/wp-content/uploads/2025/02/makanan-sehat-dan-bergizi-1.jpeg?resize=1536%2C864&ssl=1<?php echo urlencode($plan['plan_name']); ?>" class="card-img-top" alt="<?php echo htmlspecialchars($plan['plan_name']); ?>">
-                        <div class="card-body d-flex flex-column">
-                            <h5 class="card-title fw-bold"><?php echo htmlspecialchars($plan['plan_name']); ?></h5>
-                            <p class="card-text text-success fw-bold fs-4">Rp<?php echo number_format($plan['price'], 0, ',', '.'); ?> / meal</p>
-                            <p class="card-text"><?php echo htmlspecialchars($plan['description']); ?></p>
-                            <button type="button" class="btn btn-primary mt-auto" data-bs-toggle="modal" data-bs-target="#planModal<?php echo $plan['id']; ?>">
-                                See More Details
-                            </button>
-                        </div>
-                    </div>
-                </div>
+    <div class="card h-100 shadow-sm">
+        <img src="https://i0.wp.com/ciputrahospital.com/wp-content/uploads/2025/02/makanan-sehat-dan-bergizi-1.jpeg?resize=1536%2C864&ssl=1"
+             class="card-img-top"
+             alt="<?php echo htmlspecialchars($plan['plan_name']); ?>">
+        <div class="card-body d-flex flex-column">
+            <h5 class="card-title fw-bold"><?php echo htmlspecialchars($plan['plan_name']); ?></h5>
+            <p class="card-text text-success fw-bold fs-4">Rp<?php echo number_format($plan['price'], 0, ',', '.'); ?> / meal</p>
+            <p class="card-text"><?php echo htmlspecialchars($plan['description']); ?></p>
+            <button type="button" class="btn btn-primary mt-auto"
+                    data-bs-toggle="modal"
+                    data-bs-target="#planModal<?php echo $plan['id']; ?>">
+                See More Details
+            </button>
+        </div>
+    </div>
+</div>
+
 
                 <div class="modal fade" id="planModal<?php echo $plan['id']; ?>" tabindex="-1" aria-labelledby="planModalLabel<?php echo $plan['id']; ?>" aria-hidden="true">
                     <div class="modal-dialog modal-dialog-centered">

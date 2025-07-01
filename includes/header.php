@@ -8,7 +8,7 @@ $current_page = basename($_SERVER['PHP_SELF']);
 $current_directory = basename(dirname($_SERVER['PHP_SELF'])); 
 
 $base_url = '/sea-catering/public/'; 
-$auth_url = $base_url . 'auth/';
+$auth_url = '/sea-catering/auth/';
 $admin_url = $base_url . 'admin/';
 $pages_url = $base_url; 
 
@@ -79,11 +79,9 @@ function isActive($currentPage, $targetPage, $currentDirectory = '') {
                         </li>
                     <?php else: ?>
                         <li class="nav-item">
-                            <a class="btn btn-outline-success ms-2 <?php echo isActive($current_page, 'login.php', $current_directory); ?>" href="<?php echo $auth_url; ?>login.php">Login</a>
+                            <a class="btn btn-success ms-2 <?php echo isActive($current_page, 'login.php', $current_directory); ?>" href="<?php echo $auth_url; ?>login.php">Login</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="btn btn-success ms-2 <?php echo isActive($current_page, 'register.php', $current_directory); ?>" href="<?php echo $auth_url; ?>register.php">Register</a>
-                        </li>
+                        
                     <?php endif; ?>
                 </ul>
             </div>

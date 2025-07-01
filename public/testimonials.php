@@ -31,6 +31,7 @@ try {
     $testimonials = $stmt->fetchAll(PDO::FETCH_ASSOC);
 } catch (PDOException $e) {
     error_log("Error fetching testimonials: " . $e->getMessage());
+    // Display a user-friendly message
     echo "<div class='alert alert-danger text-center'>Could not load testimonials.</div>";
 }
 ?>
